@@ -18,6 +18,7 @@ Include a short description about what your project does and what limitations it
 #include <iostream>
 #include <string>
 #include <vector>
+#include <random>
 
 
 using namespace std;
@@ -46,16 +47,31 @@ class Student {
 
 };
 
-void originalStudents(vector<Student> &students) {
-    students.emplace_back("Enzo", "Guillouche", 19, 1, 2024);
-    students.emplace_back("Camille", "Gayat", 19, 2, 2024);
-    students.emplace_back("Clementine", "Cruel", 24, 3, 2021);
+Student generateRandomStudent(int id){
+    string names[] = {"John", "Enzo", "Michel", "Lucas", "Laura-Lee", "Clementine", "Thibaud"};
+    string lastnames[] = {"Doe", "Guillouche", "Riff", "Megnan", "Hollande", "Curel", "Marlier"};
+    
+    string name = names[rand() % 7];
+    string lastname = lastnames[rand() % 7];
+    int age = rand() % 10 + 18;
+    int enrollmentYear = rand() % 5 + 2015;
+
+    return Student(name, lastname, age, id, enrollmentYear);
+}
+
+void populateStudents(vector<Student> &students, int count) {
+    for (int i = 0; i < count; ++i) {
+        students.push_back(generateRandomStudent(i + 1));
+    }
 }
 
 int main() {
     vector<Student> students;
-    originalStudents(students);
 
+    int numberOfStudents = 9;
+    populateStudents(students, numberOfStudents);
+
+    // Display the students
     for (const auto &student : students) {
         student.display();
     }
