@@ -47,7 +47,7 @@ Follow the prompts in the console to interact with the system.
 
 - Not clearing the console when entering an input, leading to a clumsy terminal.
 - The sorting algorithm could probably be more efficient
-- Use of AI, I need to note that this was not 100% done, using my own knowledge and relied on some use of AI to go to the end of the assignement.
+- Use of AI, I need to note that this was not 100% done using my own knowledge, and relied on some use of AI to go to the end of the assignement.
   - bear in mind that I didnt prompted the AI to do it for me but rather guide me.
 - Random generation of student isn't this random, it randomizes once the students, but don't comprehend why when compiling it doesnt change anything, so something might be wrong in my random generation.
 - Clumsy file management
@@ -56,7 +56,7 @@ Follow the prompts in the console to interact with the system.
 
 ## Final Words
 
-I hope you will enjoy this simple program (I doubt you will lol aint notihing fun about).
+I hope you will enjoy this simple program (I doubt you will lol, aint nothing fun about it).
 
 Looking forward for your code reviews on monday, they will be valuable. 
 
