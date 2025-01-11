@@ -16,65 +16,61 @@ Include a short description about what your project does and what limitations it
 */
 
 #include <iostream>
-#include <string>
 #include <vector>
 #include <random>
+#include "randomStudentGeneration.h"
+#include "studentManagement.h"
 
 
 using namespace std;
 
-class Student {
-    private:
-        string name;
-        string lastname; 
-        int age;
-        int id;
-        int enrollmentYear;
-
-    public:
-        Student(string name, string lastname, int age, int id, int enrollmentYear){
-            this->name = name;
-            this->lastname = lastname;
-            this->age = age;
-            this->id = id;
-            this->enrollmentYear = enrollmentYear;
-        }
-
-        void display() const {
-        cout << "ID: " << id << ", Name: " << name << " " << lastname
-            << ", Age: " << age << ", Enrollment Year: " << enrollmentYear << endl;
-    }
-
-};
-
-Student generateRandomStudent(int id){
-    string names[] = {"John", "Enzo", "Michel", "Lucas", "Laura-Lee", "Clementine", "Thibaud"};
-    string lastnames[] = {"Doe", "Guillouche", "Riff", "Megnan", "Hollande", "Curel", "Marlier"};
-    
-    string name = names[rand() % 7];
-    string lastname = lastnames[rand() % 7];
-    int age = rand() % 10 + 18;
-    int enrollmentYear = rand() % 5 + 2015;
-
-    return Student(name, lastname, age, id, enrollmentYear);
-}
-
-void populateStudents(vector<Student> &students, int count) {
-    for (int i = 0; i < count; ++i) {
-        students.push_back(generateRandomStudent(i + 1));
-    }
-}
-
 int main() {
     vector<Student> students;
+    int initialStudents = 5;
 
-    int numberOfStudents = 9;
-    populateStudents(students, numberOfStudents);
+    // Populate initial students using random generation and creating a set of students initially.
+    populateStudents(students, initialStudents);
 
-    // Display the students
-    for (const auto &student : students) {
-        student.display();
-    }
+    int choice;
+    do {
+        // Display menu options
+        cout << "\nStudent Management System\n";
+        cout << "1. Display All Students\n";
+        cout << "2. Add Student\n";
+        cout << "3. Retrieve Student by ID\n";
+        cout << "4. Update Student by ID\n";
+        cout << "5. Remove Student by ID\n";
+        cout << "6. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                // Display all students
+                for (const auto &student : students) {
+                    student.display();
+                }
+                break;
+            case 2:
+                addStudent(students);
+                break;
+            case 3:
+                retrieveStudent(students);
+                break;
+            case 4:
+                updateStudent(students);
+                break;
+            case 5:
+                removeStudent(students);
+                break;
+            case 6:
+                cout << "Exiting program. Goodbye!\n";
+                break;
+            default:
+                cout << "Invalid choice. Please try again.\n";
+                break;
+        }
+    } while (choice != 6);
 
     return 0;
 }
