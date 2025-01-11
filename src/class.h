@@ -12,6 +12,15 @@ class Student {
         int enrollmentYear;
 
     public:
+
+        // default constructor for the student class
+        Student() {
+            name = "";
+            lastname = "";
+            age = 0;
+            id = 0;
+            enrollmentYear = 0;
+        }
         // constructor for the student class
         Student(string name, string lastname, int age, int id, int enrollmentYear){
             this->name = name;
@@ -33,6 +42,15 @@ class Student {
     int getId() const {
         return id;
     }
+
+    int getEnrollmentYear() const {
+        return enrollmentYear;
+    }
+
+    string getName() const { return name; }
+    string getLastname() const { return lastname; }
+    int getAge() const { return age; }
+
 
     // Attributes setters to modify information of the student
     void setName(const string &newName) { name = newName; }

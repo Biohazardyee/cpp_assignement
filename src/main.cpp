@@ -20,6 +20,7 @@ Include a short description about what your project does and what limitations it
 #include <random>
 #include "randomStudentGeneration.h"
 #include "studentManagement.h"
+#include "sorting.h"
 
 
 using namespace std;
@@ -40,7 +41,8 @@ int main() {
         cout << "3. Retrieve Student by ID\n";
         cout << "4. Update Student by ID\n";
         cout << "5. Remove Student by ID\n";
-        cout << "6. Exit\n";
+        cout << "6. Sort Students\n";
+        cout << "7. Exit\n";
         cout << "Enter your choice: ";
         cin >> choice;
 
@@ -63,14 +65,17 @@ int main() {
             case 5:
                 removeStudent(students);
                 break;
-            case 6:
+            case 6: 
+                sortStudents(students);  // Sorting function call
+                break;
+            case 7:
                 cout << "Exiting program. Goodbye!\n";
                 break;
             default:
                 cout << "Invalid choice. Please try again.\n";
                 break;
         }
-    } while (choice != 6);
+    } while (choice != 7);  // Ensure loop continues until 7 is chosen to exit
 
     return 0;
 }
